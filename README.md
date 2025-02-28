@@ -1,6 +1,6 @@
 # Crystal-X: A GNN-Based Approach for Accurate Band Gap Prediction
 
-![Crystal-X Model](Untitled Diagram (1).jpg)
+![Crystal-X Model](Architecture.jpg)
 
 ## 📌 Overview
 Crystal-X is a **Graph Neural Network (GNN)-based model** for **accurate and efficient band gap prediction** in materials science. Traditional methods like **Density Functional Theory (DFT)** are computationally expensive, making large-scale materials screening impractical. Crystal-X leverages **edge-centric convolutions and deep learning** to achieve **state-of-the-art accuracy** with significantly lower computational overhead.
