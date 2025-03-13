@@ -1,6 +1,3 @@
-# Crystal-X: A GNN-Based Approach for Accurate Band Gap Prediction
-
-![Crystal-X Model](Architecture.jpg)
 
 # Crystal-X: A Novel GNN-Based Approach for Accurate Band Gap Prediction
 
