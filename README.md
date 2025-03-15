@@ -43,7 +43,7 @@ The accurate prediction of band gaps is essential for the discovery of new semic
 ---
 
 ### How to Cite
-Shehroz Ahmad Shoaib, Burhan SaifAddin. (Year). Crystal-X: A Novel GNN-Based Approach for Accurate Band Gap Prediction. [Online]. Available: https://github.com/yourusername/Crystal-X
+Shehroz Ahmad Shoaib, Burhan SaifAddin. (Year). Crystal-X: A Novel GNN-Based Approach for Accurate Band Gap Prediction. [Online]. Available: https://github.com/shehrozashoaib/Crystal-X
 
 ---
 
