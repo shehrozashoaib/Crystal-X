@@ -43,6 +43,14 @@ identifying high-MAE outliers.
 
 ---
 
+### Dataset
+The Materials Project Dataset 2018 version was downloaded from this URL:
+https://figshare.com/articles/dataset/Materials_Project_MP_2018_6_MODData/12834275?file=24364571
+
+The 2022 version was imported using the MP API.
+
+---
+
 ### How to Cite
 Shehroz Ahmad Shoaib, Burhan SaifAddin. (2025). Bridging Atomic and Bond Modalities: Crystal-X Network for Enhanced Bandgap Prediction [Online]. Available: https://github.com/shehrozashoaib/Crystal-X
 
