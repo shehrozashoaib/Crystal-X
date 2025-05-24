@@ -1,14 +1,14 @@
 
-# Crystal-X: A Novel GNN-Based Approach for Accurate Band Gap Prediction
+# Bridging Atomic and Bond Modalities: Crystal-X Network for Enhanced Bandgap Prediction
 
 Welcome to the official GitHub repository for **Crystal-X** – an advanced graph neural network (GNN) model designed to accurately predict electronic band gaps in materials. This project builds upon the existing Crystal Graph Convolutional Neural Network (CGCNN) architecture by introducing edge-centered convolutions and a novel neighbor feature transformation.
 
 ---
 
-## Overview
+## Abstract
 
-The accurate prediction of band gaps is essential for the discovery of new semiconductors used in solar cells, wide bandgap materials, and electronic devices. **Crystal-X** addresses the computational bottlenecks of traditional methods such as density functional theory (DFT) by leveraging GPU acceleration and dynamic edge feature learning. Our model demonstrates a significant reduction in mean absolute error (MAE), achieving 0.25 eV compared to 0.39 eV with CGCNN and 0.33 eV with MEGNet.
-
+Graph neural networks (GNNs) are key tools for predicting material properties at low computational cost by learning crystal structure representations. However, most approaches treat edge attributes as secondary to nodes despite bonds’ critical role in electronic properties. In this study, we introduce Crystal-X, a multimodal GNN architecture that connects atomic and bonding environments through edge-convolutional operations. Current node-centric models fall short in modeling complex bonding environments that determine bandgap values and other material properties. We analyze this limitation by exploring three aspects: performance across space groups, crystal centering types, and bandgap ranges. To address these identified shortcomings, we propose a simple solution: asymmetric edge convolutions with neighbor feature transformations, which directly supplement the missing bond information to GNNs. The resulting architecture achieves a bandgap prediction MAE of 0.26 eV on the Materials Project dataset—improving on CGCNN (0.39 eV), SchNet (0.42 eV), and MEGNet (0.33 eV))—with particular improvements for crystal materials for complex space groups (e.g., monoclinic systems, space groups 3–15), where bond interactions critically influence properties, and non-primitive centering types (e.g., face-centered lattices) with variable bond lengths. We implement granular analysis of the dataset, revealing the impact of data bias on learning and performance in underrepresented band gap classes, and 
+identifying high-MAE outliers.
 ---
 
 
@@ -43,7 +43,7 @@ The accurate prediction of band gaps is essential for the discovery of new semic
 ---
 
 ### How to Cite
-Shehroz Ahmad Shoaib, Burhan SaifAddin. (Year). Crystal-X: A Novel GNN-Based Approach for Accurate Band Gap Prediction. [Online]. Available: https://github.com/shehrozashoaib/Crystal-X
+Shehroz Ahmad Shoaib, Burhan SaifAddin. (2025). Bridging Atomic and Bond Modalities: Crystal-X Network for Enhanced Bandgap Prediction [Online]. Available: https://github.com/shehrozashoaib/Crystal-X
 
 ---
 
@@ -52,4 +52,7 @@ For questions, collaborations, or further information:
 
 Name: Shehroz Ahmad Shoaib
 Email: s202353930@kfupm.edu.sa
+
+Name: Burhan SaifAddin
+Email: burhan.saifaddin@kfupm.edu.sa
 
