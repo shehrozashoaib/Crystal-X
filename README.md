@@ -15,6 +15,8 @@ identifying high-MAE outliers.
 
 ## Project Details
 
+### Data Features Creation
+- For generating dataset tensors, the algorithm proposed by CGCNN's authors was used. The original file can be viewed in their GitHub repo: https://github.com/txie-93/cgcnn
 
 ### Methodology
 - **Model Architecture:** Builds upon CGCNN with the following key innovations:
