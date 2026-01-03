@@ -63,13 +63,13 @@ Pymatgen
 Materials Project API (MP_API)
 
 **Running**
-To run the notebook and code files, make a local directory root_dir in the same folder as the remaining files. Next, save the atom_init.json inside this folder. 
+To run the notebook and code files, clone this GitHub repo. Make a local directory root_dir in the same folder as the remaining files. Next, save the atom_init.json inside this folder. 
 
 To use the MP 2022 dataset, replace the 'your_api_key' in data.py with your custom API key available upon creating a free account at Materials Project Dataset: https://next-gen.materialsproject.org/
 
 Next, simply run each cell in the notebook.
 
-For MP 2018 dataset, download the MODData file from the URL provided above. 
+For MP 2018 dataset, download the MODData file from the URL provided above, along with the MODNet library from pip. Next, replace the dataset filename in the main.ipynb with the data_MP_2018.py, and then simply start running each cell. Make sure to replace the name of the MODData file downloaded from the URL above in the dataset file.
 
 ---
 
