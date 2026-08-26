@@ -34,9 +34,34 @@ identifying high-MAE outliers.
   - **Hardware:** NVIDIA RTX 4090 GPU, Intel Core i9 CPU
 
 ### Key Results
-- **Performance:** Achieves a MAE of 0.25 eV on band gap prediction using the Materials Project dataset.
-- **Comparative Analysis:** Outperforms CGCNN (0.39 eV) and MEGNet (0.33 eV), with performance approaching ALIGNN (0.22 eV) but at a lower computational cost.
-- **Error Analysis:** Demonstrates significant improvements in metallic compounds while highlighting challenges in semiconductor and insulator predictions.
+
+Crystal-X reaches **0.251 eV** MAE on Materials Project band gap.
+
+**Matched-protocol benchmark.** Literature MAEs are reported on each model's own test
+split, so they cannot be compared directly. We therefore retrained CGCNN and ALIGNN from
+scratch alongside Crystal-X on the *same* MODNet MP_2018.6 data, the *same* 61,640/6,848
+split, and evaluated all three on the *same* 6,848 test crystals:
+
+| model | MAE (eV) | RMSE (eV) | R² | wallclock (1×A100) |
+|---|---|---|---|---|
+| **Crystal-X** | **0.2511** | **0.4983** | **0.9079** | 1.9 h |
+| CGCNN | 0.2681 | 0.5105 | 0.9034 | 1.3 h |
+| ALIGNN | 0.2632 | 0.5464 | 0.8893 | 11.5 h |
+
+Crystal-X leads on all three metrics and in six of seven crystal systems, at ~1/6 of
+ALIGNN's training cost. Full protocol, per-crystal-system and per-band-gap-range
+breakdowns, trained weights, run logs and reproduction scripts are in
+[`baselines/training/`](baselines/training/) — including a documented caveat that the
+validation split is reused as the test split for all three models.
+
+Under this matched protocol the commonly cited single-split figures shift: CGCNN performs
+considerably better than its 0.39 eV literature value, and ALIGNN considerably worse than
+its 0.22 eV, which was measured on a 4,239-material JARVIS `megnet` split sharing only
+~11% of its materials with ours. Comparisons across published splits should be read with
+that in mind.
+
+- **Error analysis:** largest gains on metallic compounds (MAE 0.126 vs. CGCNN 0.137 and
+  ALIGNN 0.152); wide-gap insulators remain the hardest class for all three models.
 
 ### Future Directions
 - Predict additional electronic properties.
@@ -49,9 +74,17 @@ identifying high-MAE outliers.
 The Materials Project Dataset 2018 version was downloaded from this URL:
 https://figshare.com/articles/dataset/Materials_Project_MP_2018_6_MODData/12834275?file=24364571
 
-The 2022 version was imported using the MP API.
+The 2022 version was imported using the MP API. The matched benchmark above uses the
+MODNet MP_2018.6 version.
 
 ---
+
+### Baselines & Benchmark
+
+[`baselines/training/`](baselines/training/) contains everything for the three-model
+comparison: training scripts for Crystal-X, CGCNN and ALIGNN, the Slurm jobs used,
+per-material test predictions for all three, trained weights, metric summary CSVs, the
+per-space-group figure, and the run logs. Start with its README.
 
 ### Reproducing & Usage
 Our code uses the following libraries:

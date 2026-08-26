@@ -1,0 +1,7 @@
+{
+  "n_train": 61640,
+  "n_val": 6848,
+  "n_test": 6848,
+  "total": 75336,
+  "note": "val block == test block (reused); order train|val|test"
+}

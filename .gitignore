@@ -1,0 +1,33 @@
+# --- large data / artifacts that must never be committed ---
+*.pt
+!baselines/training/results/alignn_bandgap/best_model.pt
+*.pth
+!baselines/training/results/crystalx_bandgap/model_best.pth
+*.pth.tar
+!baselines/training/results/cgcnn_bandgap/mp2018_bandgap_model_best.pth.tar
+*.zip
+*.jsonl
+*.pkl
+
+# built datasets (tens of GB; rebuild with the scripts in baselines/training/scripts)
+baselines/training/data/mp2018_bandgap/
+baselines/training/data/mp2018_bandgap_smoke/
+baselines/training/data/alignn_mp2018_bandgap/id_prop.json
+baselines/training/data/alignn_mp2018_bandgap_smoke/
+baselines/training/alignn_run/alignn/MP_json_*/
+baselines/training/alignn_run/alignn/partitions/
+baselines/training/alignn_run/alignn/alignn_80dense/
+baselines/training/dcgm/
+baselines/training/results/smoke/
+
+# superseded, unmatched-test-set outputs (see baselines/training/README.md)
+baselines/*.csv
+baselines/*.png
+baselines/*.pdf
+baselines/*.py
+Picture1.png
+
+# python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/

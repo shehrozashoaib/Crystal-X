@@ -1,0 +1,8 @@
+crystal_system,space_groups,n,MAE_Crystal-X,MAE_CGCNN,MAE_ALIGNN
+triclinic,1-2,1062,0.2982,0.3101,0.3235
+monoclinic,3-15,1766,0.2845,0.2932,0.2855
+orthorhombic,16-74,1317,0.2848,0.3002,0.2782
+tetragonal,75-142,707,0.1935,0.2028,0.2070
+trigonal,143-167,628,0.2664,0.2958,0.2932
+hexagonal,168-194,459,0.1583,0.1849,0.1837
+cubic,195-230,909,0.1634,0.1977,0.1911

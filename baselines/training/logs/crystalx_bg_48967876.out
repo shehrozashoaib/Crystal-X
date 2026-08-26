@@ -1,0 +1,211 @@
+Node: gpu108-02-l  Start: 2026-07-16T12:15:29+03:00
+DATA=/ibex/user/shoaibsa/Crystal-X/baselines/training/data/mp2018_bandgap/seed123  OUT=/ibex/user/shoaibsa/Crystal-X/baselines/training/results/crystalx_bandgap  EPOCHS=200  SEED=123  BS=256
+NVIDIA A100-SXM4-80GB, 81920 MiB
+[data] train=61640 val=6848 test=6848
+[normalizer] mean=1.4229 std=1.6835
+[model] orig_atom_fea_len=113 nbr_fea_len=101 n_conv=8 params=1002113
+epoch   0  train_MAE=0.6783  val_MAE=0.5621  *best
+epoch   1  train_MAE=0.5453  val_MAE=0.4891  *best
+epoch   2  train_MAE=0.5022  val_MAE=0.5004
+epoch   3  train_MAE=0.4832  val_MAE=0.4652  *best
+epoch   4  train_MAE=0.4439  val_MAE=0.4276  *best
+epoch   5  train_MAE=0.4300  val_MAE=0.4251  *best
+epoch   6  train_MAE=0.4181  val_MAE=0.4622
+epoch   7  train_MAE=0.4016  val_MAE=0.3787  *best
+epoch   8  train_MAE=0.3899  val_MAE=0.3894
+epoch   9  train_MAE=0.3832  val_MAE=0.4240
+epoch  10  train_MAE=0.3757  val_MAE=0.4132
+epoch  11  train_MAE=0.3689  val_MAE=0.3776  *best
+epoch  12  train_MAE=0.3597  val_MAE=0.3966
+epoch  13  train_MAE=0.3595  val_MAE=0.3812
+epoch  14  train_MAE=0.3534  val_MAE=0.3809
+epoch  15  train_MAE=0.3435  val_MAE=0.3884
+epoch  16  train_MAE=0.3497  val_MAE=0.3420  *best
+epoch  17  train_MAE=0.3296  val_MAE=0.3458
+epoch  18  train_MAE=0.3358  val_MAE=0.3430
+epoch  19  train_MAE=0.3234  val_MAE=0.3365  *best
+epoch  20  train_MAE=0.3175  val_MAE=0.3452
+epoch  21  train_MAE=0.3156  val_MAE=0.3316  *best
+epoch  22  train_MAE=0.3105  val_MAE=0.3369
+epoch  23  train_MAE=0.3020  val_MAE=0.3557
+epoch  24  train_MAE=0.3063  val_MAE=0.3273  *best
+epoch  25  train_MAE=0.2969  val_MAE=0.3439
+epoch  26  train_MAE=0.2917  val_MAE=0.3304
+epoch  27  train_MAE=0.2957  val_MAE=0.3186  *best
+epoch  28  train_MAE=0.2856  val_MAE=0.3211
+epoch  29  train_MAE=0.2889  val_MAE=0.3484
+epoch  30  train_MAE=0.2894  val_MAE=0.3116  *best
+epoch  31  train_MAE=0.2818  val_MAE=0.3326
+epoch  32  train_MAE=0.2855  val_MAE=0.3069  *best
+epoch  33  train_MAE=0.2766  val_MAE=0.3232
+epoch  34  train_MAE=0.2835  val_MAE=0.3189
+epoch  35  train_MAE=0.2789  val_MAE=0.3275
+epoch  36  train_MAE=0.2642  val_MAE=0.3009  *best
+epoch  37  train_MAE=0.2639  val_MAE=0.3247
+epoch  38  train_MAE=0.2678  val_MAE=0.3071
+epoch  39  train_MAE=0.2565  val_MAE=0.3084
+epoch  40  train_MAE=0.2673  val_MAE=0.3097
+epoch  41  train_MAE=0.2664  val_MAE=0.2994  *best
+epoch  42  train_MAE=0.2561  val_MAE=0.3196
+epoch  43  train_MAE=0.2493  val_MAE=0.3039
+epoch  44  train_MAE=0.2606  val_MAE=0.3150
+epoch  45  train_MAE=0.2525  val_MAE=0.3147
+epoch  46  train_MAE=0.2528  val_MAE=0.3224
+epoch  47  train_MAE=0.2469  val_MAE=0.2908  *best
+epoch  48  train_MAE=0.2420  val_MAE=0.3147
+epoch  49  train_MAE=0.2442  val_MAE=0.3420
+epoch  50  train_MAE=0.2463  val_MAE=0.3082
+epoch  51  train_MAE=0.2426  val_MAE=0.2997
+epoch  52  train_MAE=0.2441  val_MAE=0.2954
+epoch  53  train_MAE=0.2335  val_MAE=0.2969
+epoch  54  train_MAE=0.2284  val_MAE=0.3105
+epoch  55  train_MAE=0.2205  val_MAE=0.2854  *best
+epoch  56  train_MAE=0.2222  val_MAE=0.3002
+epoch  57  train_MAE=0.2345  val_MAE=0.3064
+epoch  58  train_MAE=0.2387  val_MAE=0.3021
+epoch  59  train_MAE=0.2338  val_MAE=0.3262
+epoch  60  train_MAE=0.2357  val_MAE=0.3085
+epoch  61  train_MAE=0.2220  val_MAE=0.3214
+epoch  62  train_MAE=0.2243  val_MAE=0.2889
+epoch  63  train_MAE=0.2122  val_MAE=0.2972
+epoch  64  train_MAE=0.2207  val_MAE=0.2874
+epoch  65  train_MAE=0.2141  val_MAE=0.2998
+epoch  66  train_MAE=0.2247  val_MAE=0.3025
+epoch  67  train_MAE=0.2077  val_MAE=0.2904
+epoch  68  train_MAE=0.2216  val_MAE=0.3081
+epoch  69  train_MAE=0.2148  val_MAE=0.2832  *best
+epoch  70  train_MAE=0.2318  val_MAE=0.2897
+epoch  71  train_MAE=0.2179  val_MAE=0.2868
+epoch  72  train_MAE=0.2029  val_MAE=0.2872
+epoch  73  train_MAE=0.2080  val_MAE=0.2824  *best
+epoch  74  train_MAE=0.1972  val_MAE=0.2887
+epoch  75  train_MAE=0.2035  val_MAE=0.3075
+epoch  76  train_MAE=0.2032  val_MAE=0.2795  *best
+epoch  77  train_MAE=0.2013  val_MAE=0.2935
+epoch  78  train_MAE=0.2081  val_MAE=0.2939
+epoch  79  train_MAE=0.2095  val_MAE=0.3036
+epoch  80  train_MAE=0.2051  val_MAE=0.3103
+epoch  81  train_MAE=0.2045  val_MAE=0.3061
+epoch  82  train_MAE=0.2028  val_MAE=0.2812
+epoch  83  train_MAE=0.2003  val_MAE=0.2881
+epoch  84  train_MAE=0.1933  val_MAE=0.2728  *best
+epoch  85  train_MAE=0.1906  val_MAE=0.3037
+epoch  86  train_MAE=0.1989  val_MAE=0.2924
+epoch  87  train_MAE=0.1919  val_MAE=0.2731
+epoch  88  train_MAE=0.1811  val_MAE=0.2788
+epoch  89  train_MAE=0.1937  val_MAE=0.3248
+epoch  90  train_MAE=0.1994  val_MAE=0.2995
+epoch  91  train_MAE=0.1885  val_MAE=0.2883
+epoch  92  train_MAE=0.1900  val_MAE=0.2850
+epoch  93  train_MAE=0.1963  val_MAE=0.2999
+epoch  94  train_MAE=0.1870  val_MAE=0.2729
+epoch  95  train_MAE=0.1801  val_MAE=0.2885
+epoch  96  train_MAE=0.1931  val_MAE=0.2795
+epoch  97  train_MAE=0.1855  val_MAE=0.2769
+epoch  98  train_MAE=0.2007  val_MAE=0.3193
+epoch  99  train_MAE=0.1969  val_MAE=0.2831
+epoch 100  train_MAE=0.1569  val_MAE=0.2582  *best
+epoch 101  train_MAE=0.1457  val_MAE=0.2566  *best
+epoch 102  train_MAE=0.1418  val_MAE=0.2567
+epoch 103  train_MAE=0.1401  val_MAE=0.2545  *best
+epoch 104  train_MAE=0.1376  val_MAE=0.2551
+epoch 105  train_MAE=0.1352  val_MAE=0.2552
+epoch 106  train_MAE=0.1341  val_MAE=0.2552
+epoch 107  train_MAE=0.1324  val_MAE=0.2538  *best
+epoch 108  train_MAE=0.1319  val_MAE=0.2539
+epoch 109  train_MAE=0.1301  val_MAE=0.2569
+epoch 110  train_MAE=0.1292  val_MAE=0.2522  *best
+epoch 111  train_MAE=0.1287  val_MAE=0.2530
+epoch 112  train_MAE=0.1271  val_MAE=0.2561
+epoch 113  train_MAE=0.1263  val_MAE=0.2531
+epoch 114  train_MAE=0.1256  val_MAE=0.2536
+epoch 115  train_MAE=0.1240  val_MAE=0.2540
+epoch 116  train_MAE=0.1235  val_MAE=0.2556
+epoch 117  train_MAE=0.1228  val_MAE=0.2544
+epoch 118  train_MAE=0.1218  val_MAE=0.2529
+epoch 119  train_MAE=0.1208  val_MAE=0.2544
+epoch 120  train_MAE=0.1213  val_MAE=0.2540
+epoch 121  train_MAE=0.1202  val_MAE=0.2552
+epoch 122  train_MAE=0.1200  val_MAE=0.2536
+epoch 123  train_MAE=0.1194  val_MAE=0.2553
+epoch 124  train_MAE=0.1176  val_MAE=0.2538
+epoch 125  train_MAE=0.1174  val_MAE=0.2512  *best
+epoch 126  train_MAE=0.1161  val_MAE=0.2524
+epoch 127  train_MAE=0.1157  val_MAE=0.2534
+epoch 128  train_MAE=0.1157  val_MAE=0.2547
+epoch 129  train_MAE=0.1146  val_MAE=0.2511  *best
+epoch 130  train_MAE=0.1145  val_MAE=0.2570
+epoch 131  train_MAE=0.1135  val_MAE=0.2537
+epoch 132  train_MAE=0.1132  val_MAE=0.2538
+epoch 133  train_MAE=0.1111  val_MAE=0.2542
+epoch 134  train_MAE=0.1119  val_MAE=0.2536
+epoch 135  train_MAE=0.1123  val_MAE=0.2540
+epoch 136  train_MAE=0.1113  val_MAE=0.2552
+epoch 137  train_MAE=0.1120  val_MAE=0.2522
+epoch 138  train_MAE=0.1104  val_MAE=0.2567
+epoch 139  train_MAE=0.1082  val_MAE=0.2538
+epoch 140  train_MAE=0.1097  val_MAE=0.2526
+epoch 141  train_MAE=0.1081  val_MAE=0.2531
+epoch 142  train_MAE=0.1088  val_MAE=0.2545
+epoch 143  train_MAE=0.1073  val_MAE=0.2533
+epoch 144  train_MAE=0.1075  val_MAE=0.2556
+epoch 145  train_MAE=0.1065  val_MAE=0.2572
+epoch 146  train_MAE=0.1058  val_MAE=0.2535
+epoch 147  train_MAE=0.1055  val_MAE=0.2537
+epoch 148  train_MAE=0.1055  val_MAE=0.2535
+epoch 149  train_MAE=0.1043  val_MAE=0.2558
+epoch 150  train_MAE=0.1050  val_MAE=0.2561
+epoch 151  train_MAE=0.1047  val_MAE=0.2522
+epoch 152  train_MAE=0.1042  val_MAE=0.2551
+epoch 153  train_MAE=0.1030  val_MAE=0.2525
+epoch 154  train_MAE=0.1029  val_MAE=0.2530
+epoch 155  train_MAE=0.1036  val_MAE=0.2530
+epoch 156  train_MAE=0.1018  val_MAE=0.2528
+epoch 157  train_MAE=0.1020  val_MAE=0.2567
+epoch 158  train_MAE=0.1014  val_MAE=0.2558
+epoch 159  train_MAE=0.1019  val_MAE=0.2570
+epoch 160  train_MAE=0.1017  val_MAE=0.2551
+epoch 161  train_MAE=0.1009  val_MAE=0.2554
+epoch 162  train_MAE=0.0999  val_MAE=0.2546
+epoch 163  train_MAE=0.0999  val_MAE=0.2547
+epoch 164  train_MAE=0.0991  val_MAE=0.2557
+epoch 165  train_MAE=0.0986  val_MAE=0.2553
+epoch 166  train_MAE=0.0980  val_MAE=0.2585
+epoch 167  train_MAE=0.0988  val_MAE=0.2568
+epoch 168  train_MAE=0.0983  val_MAE=0.2555
+epoch 169  train_MAE=0.0993  val_MAE=0.2542
+epoch 170  train_MAE=0.0974  val_MAE=0.2534
+epoch 171  train_MAE=0.0970  val_MAE=0.2544
+epoch 172  train_MAE=0.0966  val_MAE=0.2536
+epoch 173  train_MAE=0.0959  val_MAE=0.2565
+epoch 174  train_MAE=0.0962  val_MAE=0.2605
+epoch 175  train_MAE=0.0965  val_MAE=0.2563
+epoch 176  train_MAE=0.0955  val_MAE=0.2562
+epoch 177  train_MAE=0.0961  val_MAE=0.2561
+epoch 178  train_MAE=0.0958  val_MAE=0.2565
+epoch 179  train_MAE=0.0948  val_MAE=0.2556
+epoch 180  train_MAE=0.0952  val_MAE=0.2601
+epoch 181  train_MAE=0.0939  val_MAE=0.2568
+epoch 182  train_MAE=0.0928  val_MAE=0.2546
+epoch 183  train_MAE=0.0933  val_MAE=0.2560
+epoch 184  train_MAE=0.0929  val_MAE=0.2554
+epoch 185  train_MAE=0.0932  val_MAE=0.2533
+epoch 186  train_MAE=0.0929  val_MAE=0.2575
+epoch 187  train_MAE=0.0922  val_MAE=0.2568
+epoch 188  train_MAE=0.0917  val_MAE=0.2556
+epoch 189  train_MAE=0.0910  val_MAE=0.2568
+epoch 190  train_MAE=0.0921  val_MAE=0.2559
+epoch 191  train_MAE=0.0913  val_MAE=0.2549
+epoch 192  train_MAE=0.0909  val_MAE=0.2572
+epoch 193  train_MAE=0.0905  val_MAE=0.2593
+epoch 194  train_MAE=0.0906  val_MAE=0.2567
+epoch 195  train_MAE=0.0910  val_MAE=0.2566
+epoch 196  train_MAE=0.0898  val_MAE=0.2565
+epoch 197  train_MAE=0.0899  val_MAE=0.2562
+epoch 198  train_MAE=0.0888  val_MAE=0.2569
+epoch 199  train_MAE=0.0888  val_MAE=0.2564
+[test] loading best (val_MAE=0.2511) from /ibex/user/shoaibsa/Crystal-X/baselines/training/results/crystalx_bandgap/model_best.pth
+[test] Crystal-X test MAE = 0.2511 eV  (best epoch 129)
+[test] wrote /ibex/user/shoaibsa/Crystal-X/baselines/training/results/crystalx_bandgap/crystalx_mp2018_bandgap_test_results.csv
+End: 2026-07-16T14:06:56+03:00
+Test CSV: /ibex/user/shoaibsa/Crystal-X/baselines/training/results/crystalx_bandgap/crystalx_mp2018_bandgap_test_results.csv
