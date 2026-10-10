@@ -26,6 +26,25 @@ from pathlib import Path
 import torch
 
 
+class DirReader:
+    """Read an unzipped saved_tensors/ directory through the same interface as ZipFile."""
+
+    def __init__(self, path):
+        self.path = Path(path)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def namelist(self):
+        return [f"saved_tensors/{p.name}" for p in self.path.iterdir()]
+
+    def open(self, name):
+        return open(self.path / Path(name).name, "rb")
+
+
 def shard_indices(names, split, field):
     pat = re.compile(rf"saved_tensors/{split}_{field}_(\d+)\.(pt|txt)$")
     out = {}
@@ -80,6 +99,8 @@ def uncollate_split(zf, names, split):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--zip", default="/ibex/user/shoaibsa/Crystal-X/baselines/saved_tensors.zip")
+    ap.add_argument("--dir", default=None,
+                    help="read an unzipped saved_tensors/ directory instead of --zip")
     ap.add_argument("--out", default="/ibex/user/shoaibsa/Crystal-X/baselines/training/data/mp2018_bandgap")
     ap.add_argument("--seed", type=int, default=123,
                     help="label for the seed<> subdir; this is the DATA split label")
@@ -90,7 +111,7 @@ def main():
     out_dir = Path(args.out) / f"seed{args.seed}"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    with zipfile.ZipFile(args.zip) as zf:
+    with (DirReader(args.dir) if args.dir else zipfile.ZipFile(args.zip)) as zf:
         names = zf.namelist()
         result = {}
         for split in ["train", "test"]:

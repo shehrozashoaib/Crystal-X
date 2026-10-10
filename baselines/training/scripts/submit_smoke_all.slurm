@@ -38,11 +38,11 @@ python main.py \
   --output-dir "$SM/cgcnn" && echo "[CGCNN smoke OK]" || echo "[CGCNN smoke FAILED]"
 
 echo "==================== [2/3] Crystal-X smoke (3 ep) ===================="
-cd "$BASE/crystalx_run"
-python train_crystalx.py \
+cd "$BASE/../.."
+python train.py \
   --data-dir "$BASE/data/mp2018_bandgap_smoke/seed123" \
   --output-dir "$SM/crystalx" \
-  --epochs 3 --batch-size 256 --n-conv 8 --atom-fea-len 64 --h-fea-len 256 \
+  --epochs 3 --batch-size 256 --n-conv 6 --atom-fea-len 64 --h-fea-len 256 --loss l2 --lr 1e-4 \
   --seed 123 --workers 8 && echo "[Crystal-X smoke OK]" || echo "[Crystal-X smoke FAILED]"
 
 echo "==================== [3/3] ALIGNN smoke (3 ep) ===================="

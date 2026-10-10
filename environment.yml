@@ -1,0 +1,15 @@
+name: crystalx
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu128
+      - torch==2.10.0
+      - torch-geometric==2.6.1
+      - numpy==1.26.4
+      - pandas==2.2.3
+      - pymatgen==2025.1.9
+      - mp-api==0.45.3
+      - setuptools<81
