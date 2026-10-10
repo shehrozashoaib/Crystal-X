@@ -27,10 +27,11 @@ identifying high-MAE outliers.
 ![Crystal-X Model](Architecture.jpg)
 
 - **Training Details:**
-  - **Learning Rate:** 1×10⁻³ (using AdamW)
+  - **Optimizer:** AdamW, learning rate 1×10⁻⁴, weight decay 1×10⁻⁵ (×0.1 at epoch 100)
+  - **Loss:** L2 (MSE) by default; L1 and SmoothL1 selectable with `--loss`
   - **Batch Size:** 256
-  - **Convolutional Layers:** 8 (with batch normalization)
-  - **Epochs:** 200 (typically converges within 120 epochs)
+  - **Convolutional Layers:** 6 (with batch normalization)
+  - **Epochs:** 200
   - **Hardware:** NVIDIA RTX 4090 GPU, Intel Core i9 CPU
 
 ### Key Results
@@ -70,39 +71,94 @@ that in mind.
 
 ---
 
-### Dataset
-The Materials Project Dataset 2018 version was downloaded from this URL:
-https://figshare.com/articles/dataset/Materials_Project_MP_2018_6_MODData/12834275?file=24364571
-
-The 2022 version was imported using the MP API. The matched benchmark above uses the
-MODNet MP_2018.6 version.
-
----
-
 ### Baselines & Benchmark
 
 [`baselines/training/`](baselines/training/) contains everything for the three-model
 comparison: training scripts for Crystal-X, CGCNN and ALIGNN, the Slurm jobs used,
 per-material test predictions for all three, trained weights, metric summary CSVs, the
-per-space-group figure, and the run logs. Start with its README.
+per-space-group figure, and the run logs. All three models are evaluated on the same
+6,848 test crystals, listed in [`splits/mp2018_benchmark.json`](splits/mp2018_benchmark.json).
+Start with its README.
 
-### Reproducing & Usage
-Our code uses the following libraries:
+---
 
-PyTorch
+## Repository Layout
 
-Pymatgen
+```
+crystalx/model.py       Crystal-X model
+crystalx/data.py        crystal-graph featurization and dataset loaders (MP 2018.6, MP 2022)
+prepare_data.py         builds train/val/test tensor files
+train.py                trains Crystal-X, or evaluates a checkpoint (--eval-only)
+atom_init.json          per-element atom features
+splits/                 MP 2018.6 benchmark split (train / test ids)
+baselines/training/     Crystal-X vs. CGCNN vs. ALIGNN benchmark
+```
 
-Materials Project API (MP_API)
+## Setup
 
-**Running**
-To run the notebook and code files, clone this GitHub repo. Make a local directory root_dir in the same folder as the remaining files. Next, save the atom_init.json inside this folder. 
+Tested on Linux with Python 3.12 and CUDA 12.8.
 
-To use the MP 2022 dataset, replace the 'your_api_key' in data.py with your custom API key available upon creating a free account at Materials Project Dataset: https://next-gen.materialsproject.org/
+```bash
+conda env create -f environment.yml
+conda activate crystalx
+```
 
-Next, simply run each cell in the notebook.
+`environment.yml` installs PyTorch 2.10.0 built for CUDA 12.8. For a different CUDA version, change the
+`--extra-index-url` line to the matching wheel index from https://pytorch.org/get-started/locally/.
 
-For MP 2018 dataset, download the MODData file from the URL provided above, along with the MODNet library from pip. Next, replace the dataset filename in the main.ipynb with the data_MP_2018.py, and then simply start running each cell. Make sure to replace the name of the MODData file downloaded from the URL above in the dataset file.
+## Datasets
+
+### MP 2018.6
+
+The MODNet MP_2018.6 band-gap dataset (68,489 crystals) is on figshare:
+https://figshare.com/articles/dataset/Materials_Project_MP_2018_6_MODData/12834275
+
+```bash
+curl -L -o MP_2018.6.zip https://ndownloader.figshare.com/files/24364571   # md5 06280c4e539508bbcc5266f07698f8d1
+unzip MP_2018.6.zip MP_2018.6
+python prepare_data.py mp2018 --moddata MP_2018.6 --out data/mp2018
+```
+
+This uses the benchmark split in `splits/mp2018_benchmark.json` (61,640 train / 6,848 test) and
+holds out 10% of the dataset from the training ids for validation (`--val-ratio`).
+`--val-ratio 0` validates on the test set, which is the protocol of the stored benchmark runs.
+
+### MP 2022
+
+Downloaded from the Materials Project API. Create a free account at
+https://next-gen.materialsproject.org/ and copy your API key from the dashboard.
+
+```bash
+export MP_API_KEY=your_api_key
+python prepare_data.py mp2022 --out data/mp2022
+```
+
+This downloads every material with a band gap and makes a seeded 80/10/10 train/val/test split.
+The API serves the current database release, which is recorded in the tensor metadata; the ids of
+each split are written to `data/mp2022/split.json`.
+
+`prepare_data.py` uses all CPU cores by default (`--workers`). The MP 2018.6 tensors take about
+15 GB of disk; MP 2022 needs roughly twice that. Both are loaded into RAM during training.
+
+## Running
+
+Train (6 layers, L2 loss, learning rate 1×10⁻⁴ by default):
+
+```bash
+python train.py --data-dir data/mp2018 --output-dir runs/mp2018
+python train.py --data-dir data/mp2018 --output-dir runs/mp2018_l1 --loss l1
+python train.py --data-dir data/mp2022 --output-dir runs/mp2022
+```
+
+Each run writes the best-on-validation checkpoint (`model_best.pth`) and per-crystal test
+predictions (`test_results.csv`) to `--output-dir`. `python train.py --help` lists all options.
+
+Evaluate a trained checkpoint, e.g. the released benchmark weights:
+
+```bash
+python train.py --data-dir data/mp2018 --output-dir runs/released \
+    --eval-only baselines/training/results/crystalx_bandgap/model_best.pth
+```
 
 ---
 

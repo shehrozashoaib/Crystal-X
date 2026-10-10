@@ -1,5 +1,5 @@
 #!/bin/bash --login
-# Crystal-X band-gap (MODNet MP_2018.6) — 8 conv layers, natural recipe, best-on-val.
+# Crystal-X band-gap (MODNet MP_2018.6) — 6 conv layers, AdamW lr 1e-4, LOSS=l2|l1|smoothl1.
 # Override for a smoke run:  EPOCHS=3 DATA=.../mp2018_bandgap_smoke/seed123 OUT=... sbatch ...
 #SBATCH --gpus=1
 #SBATCH --constraint=a100
@@ -19,23 +19,24 @@ export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${LD_LIBRARY_PATH:-}"
 
 BASE=/ibex/user/shoaibsa/Crystal-X/baselines/training
 DATA="${DATA:-$BASE/data/mp2018_bandgap/seed123}"   # dir with train.pt/val.pt/test.pt
-OUT="${OUT:-$BASE/results/crystalx_bandgap}"
+OUT="${OUT:-$BASE/results/crystalx_run}"
+LOSS="${LOSS:-l2}"
 EPOCHS="${EPOCHS:-200}"
 SEED="${SEED:-123}"
 BS="${BS:-256}"
 
 echo "Node: $(hostname)  Start: $(date -Iseconds)"
-echo "DATA=$DATA  OUT=$OUT  EPOCHS=$EPOCHS  SEED=$SEED  BS=$BS"
+echo "DATA=$DATA  OUT=$OUT  EPOCHS=$EPOCHS  SEED=$SEED  BS=$BS  LOSS=$LOSS"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 
-cd "$BASE/crystalx_run"
-python train_crystalx.py \
+cd "$BASE/../.."
+python train.py \
   --data-dir "$DATA" \
   --output-dir "$OUT" \
   --epochs "$EPOCHS" --batch-size "$BS" \
-  --n-conv 8 --atom-fea-len 64 --h-fea-len 256 \
-  --lr 0.001 --weight-decay 1e-5 --lr-milestones 100 \
+  --n-conv 6 --atom-fea-len 64 --h-fea-len 256 \
+  --loss "$LOSS" --lr 1e-4 --weight-decay 1e-5 --lr-milestones 100 \
   --seed "$SEED" --workers 8
 
 echo "End: $(date -Iseconds)"
-echo "Test CSV: $OUT/crystalx_mp2018_bandgap_test_results.csv"
+echo "Test CSV: $OUT/test_results.csv"

@@ -87,7 +87,7 @@ class ConvLayer(nn.Module):
 
 
 class CrystalGraphConvNet(nn.Module):
-    def __init__(self, orig_atom_fea_len, nbr_fea_len, atom_fea_len=64, n_conv=3, h_fea_len=256, n_h=2, dense_units=[128, 64]):
+    def __init__(self, orig_atom_fea_len, nbr_fea_len, atom_fea_len=64, n_conv=6, h_fea_len=256, n_h=2, dense_units=[128, 64]):
         """
         Initialize the Crystal Graph Convolutional Network.
 
@@ -100,7 +100,7 @@ class CrystalGraphConvNet(nn.Module):
         atom_fea_len: int, optional
             Atom feature length after embedding (default is 64).
         n_conv: int, optional
-            Number of convolutional layers (default is 3).
+            Number of convolutional layers (default is 6).
         h_fea_len: int, optional
             Hidden feature length for fully connected layers (default is 128).
         n_h: int, optional

@@ -76,7 +76,7 @@ log shows the `[bestfix] reloaded BEST checkpoint` line confirming it took effec
 ## Layout
 
 ```
-crystalx_run/     train_crystalx.py + model.py (identical to the repo-root model.py)
+../../train.py    Crystal-X training (repo root; model in ../../crystalx/)
 cgcnn_run/        main.py + cgcnn package
 alignn_run/       the three locally-shadowed ALIGNN modules + the config used
 scripts/          slurm submission, dataset builders, space-group + plotting scripts
@@ -91,9 +91,11 @@ Dataset tensors and ALIGNN `id_prop.json` are tens of GB and are **not** in the 
 Rebuild them first:
 
 ```bash
-# CGCNN / Crystal-X tensors: un-collate the CGCNN-format saved tensors into
-# per-crystal samples ((atom_fea, nbr_fea, nbr_fea_idx), target, mp_id)
-python scripts/uncollate_saved_tensors.py
+# CGCNN / Crystal-X tensors for the benchmark split (validation = test, as in the stored runs),
+# built from the raw MODNet MP_2018.6 file — run from the repo root:
+python prepare_data.py mp2018 --moddata /path/to/MP_2018.6 --val-ratio 0 \
+    --out baselines/training/data/mp2018_bandgap/seed123
+# (or, from the original saved_tensors.zip: python scripts/uncollate_saved_tensors.py)
 
 # ALIGNN id_prop.json — ordered [train 61640 | val 6848 | test 6848], val block == test block
 python scripts/build_alignn_idprop.py

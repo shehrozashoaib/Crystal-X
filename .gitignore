@@ -9,7 +9,11 @@
 *.jsonl
 *.pkl
 
-# built datasets (tens of GB; rebuild with the scripts in baselines/training/scripts)
+# built datasets and training outputs
+/data/
+/runs/
+/MP_2018.6*
+baselines/training/results/crystalx_run/
 baselines/training/data/mp2018_bandgap/
 baselines/training/data/mp2018_bandgap_smoke/
 baselines/training/data/alignn_mp2018_bandgap/id_prop.json
